@@ -10,7 +10,7 @@ node {
         echo "Building in progress...."
         def antHome = tool 'LocalAnt'
         env.PATH = "${antHome}\\bin;${env.PATH}"
-        bat "ant war"
+        bat ant
     }
     stage('Test') {
         echo "Testing in progress...."

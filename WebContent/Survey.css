@@ -1,0 +1,216 @@
+body{
+  background-color:white;
+}
+
+h2{
+  background-color:#ffcc33;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  box-sizing: border-box;
+  color: black;
+}
+a{
+  color:#006633;
+}
+
+/*set a background image for the page*/
+.background{
+  background-image: url("images/Mason_survey.jpg");
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/*Style for form with a solid border and background color */
+.form{
+  background-color:whitesmoke;
+  border:2px solid #006633;
+  margin: auto;
+  width: 60%;
+  height: 120%;
+  font-size: medium;
+ color:#006633;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  padding: 12px;
+}
+
+
+.col-1 {
+  float: left;
+  width: 30%;
+  margin-top: 0px;
+}
+
+.col-2 {
+  float: left;
+  width: 70%;
+  margin-top: 0px;
+  
+}
+
+label {
+  padding: 5px 5px 5px 0;
+  display: inline-block;
+}
+
+/*User input area*/
+.inputer {
+  width: 90%;
+  padding: 5px 5px;
+  margin: 3px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  vertical-align: baseline;
+
+}
+/*styling for submit button*/
+input[type=submit] {
+  background-color:#006633;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  margin: 1rem 0;
+  width: auto;
+  cursor: pointer;
+  position:right;
+  margin-left: 14.5em;
+}
+/* mouse over submit */
+input[type=submit]:hover {
+  background-color:#006633;
+ color:#ffcc33;
+
+}
+
+input[type="button"]:hover{
+  color:#ffcc33;
+}
+.reset{
+  background-color:#ccc;
+ color:#006633;
+ padding: 10px;
+  border: none;
+  border-radius: 4px;
+  margin: 1rem 0;
+  width: auto;
+  cursor: pointer;
+  position: right;
+  margin-left: 15em;
+}
+
+.row ::after{
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#footer {
+  
+  position: fixed;
+  top:550px;
+  left:1200px;
+  bottom:20px;
+  right: 0px;
+  text-align: right;
+  
+}
+.container-footer {
+  background-color: #006633;
+  padding: 20px;
+ color:#FFCC33;
+  background: #006633;
+  margin-top: 20px;
+  
+}
+
+/*heading inside rectangular box with solid border in GMU green and 5px width*/
+.container-header {
+  background-color:#006633;
+  box-shadow: 5px 10px #ffcc33;
+  text-transform:uppercase;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size:xx-large;
+  padding:5px;
+  text-align:center;
+  color:white;
+  border:5px solid #006633;
+  background-image:url(images/Mason.png);
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+/*Navigation link list */
+.nav li a {
+  display: block;
+  color: #ccc;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+.nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 15%;
+  background-color:#006633;
+  position: absolute;
+  height: 10%;
+  overflow: auto;
+}
+
+/* visited link */
+.nav a:visited
+ {
+  color:white;
+}
+
+/* mouse over link */
+.nav a:hover 
+{
+  color:#ffcc33;
+}
+
+/* selected link */
+.nav a:active
+ {
+  color: yellow;
+}
+
+/*Forces the user to enter value before submitting the form*/
+.required {
+
+  content:"*";
+  color: red;
+
+}
+
+.error{
+  color:red;
+  font-size: small;
+}
+
+#average{
+  width: 20%;
+  padding: 5px 5px;
+  margin: 3px 0;
+  display: inline-block;
+  border: 1px solid #006633;
+  border-radius: 4px;
+  box-sizing: border-box;
+  vertical-align: baseline;
+}
+#maximum{
+  width: 20%;
+  padding: 5px 5px;
+  margin: 3px 0;
+  display: inline-block;
+  border: 1px solid #006633;
+  border-radius: 4px;
+  box-sizing: border-box;
+  vertical-align: baseline;
+  
+}
+
+

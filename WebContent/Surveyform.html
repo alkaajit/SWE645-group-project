@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="Survey.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+    <title>CS Department Survey page</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+    <script text="text/javascript">
+
+      function FormValidation() {
+            // Validation for username field is empty
+            var user = document.getElementById("uname").value;
+            document.getElementById("user_error").innerHTML = ""
+            if (user == "") {
+                document.getElementById("user_error").innerHTML = "Enter Username";
+                return false;
+            }
+            // Validation for username field contains only alphabets
+            var alphabets = /^[a-zA-Z]+$/;
+            if (!(user.match(alphabets))) {
+                document.getElementById("user_error").innerHTML = "Please input alphabet characters only";
+                return false;
+            }
+            // Validation for address field is empty
+            var streetaddress = document.getElementById("streetaddress").value;
+            document.getElementById("address_error").innerHTML = ""
+            if (streetaddress == "") {
+                document.getElementById("address_error").innerHTML = "Enter Address";
+                return false;
+            }
+            // Validation for address field is alphanumeric
+            var alphaNumerics = /^[0-9a-zA-Z]+$/;
+            if (!(streetaddress.match(alphaNumerics))) {
+                document.getElementById("address_error").innerHTML = "Please input alphanumeric characters only";
+                return false;
+            }
+            // Validation for email field is empty
+            var email = document.getElementById("email").value;
+            document.getElementById("email_error").innerHTML = ""
+            if (email == '') {
+                document.getElementById("email_error").innerHTML = "Please enter valid email ";
+                return false;
+            }
+            // Validation for email field is valid
+            if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))) {
+                document.getElementById("email_error").innerHTML = "Please enter valid email ";
+                return (false)
+            }
+            // Validation for atleast 2 checkbox selected
+            var checked = 0;
+            var c = document.getElementsByName('Liked_most');
+            for (var i = 0; i < c.length; i++) {
+                if (c[i].checked)
+                    checked++;
+            }
+            document.getElementById("checkbox_error").innerHTML = ""
+            if (checked < 2) {
+                document.getElementById("checkbox_error").innerHTML = "You should choose atleast 2 selections.";
+                return false;
+            }
+            // Validation for atleast 1 radiobutton selected
+            document.getElementById("radio_error").innerHTML = ""
+            var radios = document.getElementsByName('Get_interested');
+            var result = false
+            for (var i = 0, length = radios.length; i < length; i++) {
+                if (radios[i].checked) {
+                    result = true;
+                    break;
+                }
+            }
+            if (result == false) {
+                document.getElementById("radio_error").innerHTML = "Select atleast one interest";
+                return false;
+            }
+
+        }
+
+        function populateStateCity() {
+            var requestUrl = "http://mason.gmu.edu/~asureshb/testaccess/zipcodes.json"
+            // attempt to send the asynchronous request
+            try {
+                var asyncRequest = new XMLHttpRequest(); // create request
+                // set up callback function and store it
+                asyncRequest.onreadystatechange = function () {
+                    callbackParseData(asyncRequest);
+                }
+                // send the asynchronous request
+                asyncRequest.open('GET', requestUrl, true);
+                asyncRequest.setRequestHeader("Accept", "application/json; charset=utf-8");
+                asyncRequest.send(); // send request
+
+            } catch (error) {
+
+            }
+        }
+
+        // parse JSON data and display it on the page
+        function callbackParseData(asyncRequest) {
+            // if request has completed successfully process the response
+            if (asyncRequest.readyState == 4 && asyncRequest.status == 200) {
+                // convert the JSON string to an Object
+                var data = JSON.parse(asyncRequest.responseText);
+                displayNames(data); // display data on the page
+            }
+        }
+
+        // use the DOM to display the retrieved address book entries
+        function displayNames(data) {
+            zipValue = document.getElementById("Zip").value
+            zipArray = data.zipcodes
+            zipArray.forEach(item => {
+                if (item.zip == zipValue) {
+                    document.getElementById("State").value = item.state
+                    document.getElementById("City").value = item.city
+                }
+            });
+
+        }
+
+    </script>
+
+</head>
+
+<div class="background">
+
+    <body>
+
+        <div class="w3-container">
+
+            <!--Survey Form-->
+            <div class="container-header">
+                <p><strong>Survey Form</strong></p>
+            </div>
+
+            <br />
+            <!--Navigation element with link to CS Department home page-->
+            <div class="nav">
+                <ul>
+                    <li><a href="InformationPage.htm">HOME</a></li>
+                </ul>
+            </div>
+            <!--form with autocomplete feature -->
+            <form class="form" name="form" method="post" autocomplete="on" action="" onsubmit="return false">
+                <!--UserName-->
+                <div class="w3-row">
+                    <div class="w3-col w3-container" style="width:32%">
+                        <label for="uname">User Name:</label><span class="required">*</span>
+                    </div>
+                    <div class="w3-col w3-container" style="width:68%">
+
+                        <input class="inputer" type="text" id="uname" name="username" placeholder="user name" required
+                            autofocus /><span class="error" id="user_error"></span>
+                    </div>
+                </div>
+
+                <!--Streetaddress-->
+                <div class="w3-row">
+                    <div class="w3-col w3-container" style="width:32%">
+                        <label for="streetaddress">Street address:</label>
+                    </div>
+                    <div class="w3-col w3-container" style="width:68%">
+                        <input class="inputer" type="text" id="streetaddress" /><span class="error"
+                            id="address_error"></span>
+                    </div>
+                </div>
+
+                <!--City-->
+                <div class="w3-row">
+                    <div class="w3-col w3-container" style="width:32%">
+                        <label for="City">City:</label>
+                    </div>
+                    <div class="w3-col w3-container" style="width:68%">
+                        <input class="inputer " type="text" id="City" />
+                    </div>
+                </div>
+
+                <!--State-->
+                <div class="w3-row">
+                    <div class="w3-col w3-container" style="width:32%">
+                        <label for="State">State:</label>
+                    </div>
+                    <div class="w3-col w3-container" style="width:68%">
+                        <input class="inputer" type="text" id="State" />
+                    </div>
+                </div>
+
+                <!--Zip-->
+                <div class="w3-row">
+                    <div class="w3-col w3-container" style="width:32%">
+                        <label for="Zip">Zip:</label>
+                    </div>
+                    <div class="w3-col w3-container" style="width:68%">
+                        <input class="inputer" type="text" id="Zip" onblur="populateStateCity()" />
+                    </div>
+                </div>
+
+                <!--Telephone number-->
+                <div class="w3-row">
+                    <div class="w3-col w3-container" style="width:32%">
+                        <label for="tel">Telephone number:</label>
+                    </div>
+                    <div class="w3-col w3-container" style="width:68%">
+                        <input class="inputer" type="tel" placeholder="(###)###-####" />
+                    </div>
+                </div>
+
+                <!--Email-->
+                <div class="w3-row">
+                    <div class="w3-col w3-container" style="width:32%">
+                        <label for="email">E-mail:</label><span class="required">*</span>
+                    </div>
+                    <div class="w3-col w3-container" style="width:68%">
+                        <input class="inputer" type="email" id="email" placeholder="name@domain.com" required /> <span
+                            class="error" id="email_error"></span>
+                    </div>
+                </div>
+
+                <!--URL-->
+                <div class="w3-row">
+                    <div class="w3-col w3-container" style="width:32%">
+                        <label for="url">URL:</label>
+                    </div>
+                    <div class="w3-col w3-container" style="width:68%">
+                        <input class="inputer" type="url" id="url" placeholder="http://domainname.com" />
+                    </div>
+                </div>
+
+                <!--Date Of Survey-->
+                <div class="w3-row">
+                    <div class="w3-col w3-container" style="width:32%">
+                        <label for="date">DateofSurvey:</label><span class="required">*</span>
+                    </div>
+                    <div class="w3-col w3-container" style="width:68%">
+                        <input class="inputer" type="date" id="Date of Survey" placeholder="yyyy-mm-dd" required />
+                    </div>
+                </div>
+
+                <!--Liked most about the campus using checkbox-->
+                <div class="w3-row">
+                    <div class="w3-col w3-container" style="width:32%">
+                        <p>What did you like the most about the campus?</p>
+                    </div>
+
+                    <div class="w3-col w3-container" style="width:68%">
+                        <label>students
+                            <input name="Liked_most" type="checkbox" value="students" /></label>
+                        <label>location
+                            <input name="Liked_most" type="checkbox" value="location" /></label>
+                        <label>campus
+                            <input name="Liked_most" type="checkbox" value="campus" /></label>
+                        <label>atmosphere
+                            <input name="Liked_most" type="checkbox" value="atmosphere" /></label>
+                        <label>dorm rooms
+                            <input name="Liked_most" type="checkbox" value="dorm rooms" /></label>
+                        <label>sports
+                            <input name="Liked_most" type="checkbox" value="sports" /></label><span class="error"
+                            id="checkbox_error"></span>
+                    </div>
+                </div>
+
+                <!--Interested in the university using radio buttons-->
+                <div class="w3-row">
+                    <div class="w3-col w3-container" style="width:32%">
+                        <p>How did you get interested in the university?</p>
+                    </div>
+                    <div class="w3-col w3-container" style="width:68%">
+
+                        <label>friends
+                            <input name="Get_interested" type="radio" value="friends" /></label>
+                        <label>television
+                            <input name="Get_interested" type="radio" value="television" /></label>
+                        <label>internet
+                            <input name="Get_interested" type="radio" value="internet" /></label>
+                        <label>other
+                            <input name="Get_interested" type="radio" value="other" /></label>
+                        <span class="error" id="radio_error"></span>
+
+                    </div>
+                </div>
+
+                <!--High school graduation date using datalist feature for month-->
+                <div class="w3-row">
+                    <div class="w3-col w3-container" style="width:32%">
+                        <label>HighSchool Graduation date</label><span class="required">*</span>
+                    </div>
+                    <div class="w3-col w3-container" style="width:68%">
+                        <input list="month" name="Graduation_month" placeholder="month">
+                        <datalist id="month">
+                            <option value="January">
+                            <option value="February">
+                            <option value="March">
+                            <option value="April">
+                            <option value="May">
+                            <option value="June">
+                            <option value="July">
+                            <option value="August">
+                            <option value="September">
+                            <option value="October">
+                            <option value="November">
+                            <option value="December">
+                        </datalist>
+                        <input type="text" style="width: 271px" placeholder="year" name="Year" />
+                    </div>
+                </div>
+
+                <!--Comments-->
+                <div class="w3-row">
+                    <div class="w3-col w3-container" style="width:32%">
+                        <label>Comments:</label>
+                    </div>
+                    <div class="w3-col w3-container" style="width:68%">
+                        <textarea name="Comments" class="inputer" rows="3">Enter Comments </textarea>
+                    </div>
+                </div>
+
+                <!--Recommendation using Dropdown list-->
+                <div class="w3-row">
+                    <div class="w3-col w3-container" style="width:32%">
+                        <label>How likely is that you recommend this school to other prospective students?</br>
+
+                        </label>
+                    </div>
+                    <div class="w3-col w3-container" style="width:68%">
+                        <select name="Recommendation">
+                            <option selected="selected">Very likely</option>
+                            <option>Likely</option>
+                            <option>Unlikely</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="w3-row">
+                    <div class="w3-col w3-container" style="width:32%">
+                        <label> Raffle:</label>
+                    </div>
+                    <div class="w3-col w3-container" style="width:68%">
+                        <textarea type="text" rows="4" cols="20" id="nums" onmouseout="avgMax()"
+                            placeholder="Enter 10 numbers"></textarea>
+                        <span class="error" id="avgmax_error"></span>
+                    </div>
+                </div>
+                <!--Submit button-->
+                <div class="w3-row">
+                    <input type="submit" value="Submit" onclick="FormValidation()">
+                    <input class="reset" type="button" onclick="reset()" value="Cancel">
+                </div>
+            </form>
+            <br />
+
+        </div>
+
+        <!--Footer with GMU green background and GMU logo at bottom right-->
+        <div class="container-footer">
+            <div id="footer">
+                <a href="https://www2.gmu.edu/">
+                    <img alt="GMU website" src="images/GMU_logo.jpg" width="100" height="80"></a>
+            </div>
+        </div>
+
+    </body>
+</div>
+
+</html>

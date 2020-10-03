@@ -1,0 +1,21 @@
+node {
+
+    stage('Checkout') {
+      echo "Checkout code in progress...."
+      checkout scm
+    }
+
+
+    stage('Build') {
+        echo "Building in progress...."
+        def antHome = tool 'LocalAnt'
+        env.PATH = "${antHome}\\bin;${env.PATH}"
+        bat "ant war"
+    }
+    stage('Test') {
+        echo "Testing in progress...."
+    }
+    stage('Deploy') {
+        echo "Deployment in progress...."
+    }
+}

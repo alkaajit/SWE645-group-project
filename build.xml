@@ -13,7 +13,7 @@
     </target>
 
     <target name="war" depends="init">
-        <war destfile="dist/MyWebApplication.war" webxml="WebContent/WEB-INF/web.xml">
+        <war destfile="dist/SWE645_HW_2.war" webxml="WebContent/WEB-INF/web.xml">
             <fileset dir="WebContent"/>
             <classes dir="build/classes"/>
         </war>

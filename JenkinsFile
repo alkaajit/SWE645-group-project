@@ -15,7 +15,7 @@ node {
     
      stage('Building image') {
 	     def newApp
-	     def registry = 'swe645group/swe645group'
+	     def registry = 'swe645group/swe645repo'
 	     def registryCredential = 'swe645group'
 		docker.withRegistry( 'https://' + registry, registryCredential ) {
 			    def buildName = registry + ":$BUILD_NUMBER"

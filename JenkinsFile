@@ -12,6 +12,7 @@ node {
 	if(isUnix()){
 	  	env.PATH = "${antHome}/bin;${env.PATH}"
 		echo "${env.PATH}"
+		export PATH
           	sh "ant"
 	}
 	else

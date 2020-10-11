@@ -11,6 +11,7 @@ node {
         def antHome = tool 'LocalAnt'
 	if(isUnix()){
 	  	env.PATH = "${antHome}/bin;${env.PATH}"
+		echo "${env.PATH}"
           	sh "ant"
 	}
 	else

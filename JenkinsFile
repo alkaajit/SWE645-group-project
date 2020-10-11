@@ -9,8 +9,15 @@ node {
     stage('Build') {
         echo "Building in progress...."
         def antHome = tool 'LocalAnt'
-        env.PATH = "${antHome}\\bin;${env.PATH}"
-        bat "ant"
+	if(isUnix()){
+	  	env.PATH = "${antHome}/bin;${env.PATH}"
+          	sh "ant"
+	}
+	else
+	{
+        	env.PATH = "${antHome}\\bin;${env.PATH}"
+        	bat "ant"
+	}
     }
     
      stage('Building image') {

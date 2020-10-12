@@ -36,6 +36,8 @@ node {
     	}
     }
     stage('Deploy') {
-       kubectl apply -f swe645-1.yaml
+     withKubeConfig([credentialsId: 'token-jn5v8', serverUrl: 'https://ec2-3-237-11-24.compute-1.amazonaws.com/k8s/clusters/c-hm8sj']) {
+      sh 'kubectl apply -f swe645-1.yaml'
+    }
     }
 }

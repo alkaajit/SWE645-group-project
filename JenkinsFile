@@ -30,6 +30,9 @@ node {
 			    def buildName = buildHome + ":$BUILD_NUMBER"
 				newApp = docker.build buildName
 				newApp.push()
+				buildName = buildHome + ":latest"
+				newApp = docker.build buildName
+				newApp.push()
     	}
     }
     

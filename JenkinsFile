@@ -35,11 +35,7 @@ node {
 				newApp.push()
     	}
     }
-    
-    stage('Test') {
-        echo "Testing in progress...."
-    }
     stage('Deploy') {
-        echo "Deployment in progress...."
+       kubectl apply -f swe645-1.yaml
     }
 }

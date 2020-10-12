@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - image: ambilysureshbabu/swe645repo
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           name: swe645-1
 ---
 apiVersion: autoscaling/v2beta1

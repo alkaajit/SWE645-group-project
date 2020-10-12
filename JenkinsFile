@@ -17,7 +17,7 @@ node {
 	     def newApp
 	     def registry = 'registry.hub.docker.com'
 	     def registryCredential = 'swe645group'
-	     def buildHome = 'swe645group/swe645repo'
+	     def buildHome = 'swe645group/swe645repo:latest'
 		docker.withRegistry( 'https://' + registry, registryCredential ) {
 			        newApp = docker.build buildHome
 				newApp.push()

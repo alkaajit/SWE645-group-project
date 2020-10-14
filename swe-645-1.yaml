@@ -21,7 +21,7 @@ spec:
         app: swe645-1
     spec:
       containers:
-        - image: ambilysureshbabu/swe645repo
+        - image: swe645group/swe645_hw2:latest
           imagePullPolicy: Always
           name: swe645-1
 ---

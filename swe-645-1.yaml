@@ -58,5 +58,6 @@ spec:
     port: 443
     protocol: TCP
     targetPort: 8080
+    nodePort: 31748
   selector:
     app: swe645-1

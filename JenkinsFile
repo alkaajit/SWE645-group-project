@@ -37,7 +37,7 @@ node {
     }
     
     stage('Deploy') {
-     withKubeConfig([credentialsId: 'rancher-login', serverUrl: 'https://ec2-3-237-11-24.compute-1.amazonaws.com/k8s/clusters/c-prm2b']) {
+     withKubeConfig([credentialsId: 'rancher-login', serverUrl: 'https://ec2-3-237-11-24.compute-1.amazonaws.com/k8s/clusters/c-r742h']) {
       sh 'kubectl apply -f swe-645-1.yaml'
     }
     }

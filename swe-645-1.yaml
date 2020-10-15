@@ -21,8 +21,7 @@ spec:
         app: swe645-1
     spec:
       containers:
-        - image: swe645group/swe645_hw2:latest
-          imagePullPolicy: Always
+        - image: swe645group/swe645_hw2
           name: swe645-1
 ---
 apiVersion: autoscaling/v2beta1
@@ -58,5 +57,6 @@ spec:
     port: 443
     protocol: TCP
     targetPort: 8080
+    nodePort: 31748
   selector:
     app: swe645-1

@@ -21,7 +21,7 @@ node {
 	}
     }
     
-     stage('Building image') {
+     stage('Create image') {
 	     def newApp
 	     def registry = 'registry.hub.docker.com'
 	     def registryCredential = 'swe645group'

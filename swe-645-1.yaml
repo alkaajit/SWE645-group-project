@@ -22,7 +22,6 @@ spec:
     spec:
       containers:
         - image: swe645group/swe645_hw2:latest
-          imagePullPolicy: Always
           name: swe645-1
 ---
 apiVersion: autoscaling/v2beta1

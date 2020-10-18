@@ -39,7 +39,6 @@ node {
     stage('Deploy') {
      withKubeConfig([credentialsId: 'rancher-login', serverUrl: 'https://ec2-3-237-11-24.compute-1.amazonaws.com/k8s/clusters/c-8svkm']) {
      sh "sed -i 's/{buildNumber}/$BUILD_NUMBER/g' swe-645-1.yaml"
-     sh "cat swe-645-1.yaml"
      sh 'kubectl apply -f swe-645-1.yaml'
     }
     }

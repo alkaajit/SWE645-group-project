@@ -21,9 +21,8 @@ spec:
         app: swe645-1
     spec:
       containers:
-        - image: swe645group/swe645_hw2
+        - image: swe645group/swe645_hw2:latest
           name: swe645-1
-          imagePullPolicy: Always
 ---
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler

@@ -21,7 +21,7 @@ spec:
         app: swe645-1
     spec:
       containers:
-        - image: swe645group/swe645_hw2:latest
+        - image: swe645group/swe645_hw2:{buildNumber}
           name: swe645-1
           imagePullPolicy: Always
 ---

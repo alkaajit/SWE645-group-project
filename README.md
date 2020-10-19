@@ -1,15 +1,19 @@
 # SWE645-group-project
 
 Group Members : 
+
 Ambily Sureshbabu Rema, G01174300, http://swe645-ambily.s3-website-us-east-1.amazonaws.com
+
 Alka Ajit, G01220250, http://swe645-aajit.s3-website-us-east-1.amazonaws.com/
+
 Krishnapriya Mattathil Letha, G01181598, http://krishnaawslearning.s3-website-us-east-1.amazonaws.com/
+
 Pranathi Krishna Sangani, G01213280, http://pksanganibucket.s3-website-us-east-1.amazonaws.com
 
-
+========================================================================================================
 Our application can be accessed at :
 http://ec2-18-206-14-103.compute-1.amazonaws.com:31748/SWE645_HW_2/
-
+========================================================================================================
 Detailed documentation can be found at: https://bit.ly/347UPGF
 
 1. Setting up Git repository :
